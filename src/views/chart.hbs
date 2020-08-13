@@ -1,0 +1,184 @@
+<div id="head" style="font-size: 75px; text-align:center; margin-bottom:10px;background-color:#f5db3c">
+  CONFERENCE STATISTICS
+</div>
+<hr>
+<div id="head" style="font-size: 60px; text-align:center; margin-bottom:10px;background-color:#f5db3c">
+  GENDER
+</div>
+<hr>
+<div id="gender-wrapper" style="display:flex; justify-content:space-evenly; font-size:50px">
+  <p>
+    Men:
+  </p>
+  <div id="total-men">
+    {{men}}
+  </div>
+  <p>
+    Women:
+  </p>
+
+  <div id="total-women">
+    {{women}}
+  </div>
+
+</div>
+
+
+<canvas id="myChart" style="width: 50%; height:50%"></canvas>
+<hr>
+<div id="head" style="font-size: 60px; text-align:center; margin-bottom:10px;background-color:#f5db3c">
+  PROFESSION
+</div>
+<hr>
+<div id="profession-wrapper" style="display:flex; justify-content:space-evenly; font-size:50px; margin-top:20px">
+  <p>
+    Students:
+  </p>
+  <div id="total-student">
+    {{student}}
+  </div>
+  <p>
+    IT:
+  </p>
+  <div id="total-it">
+    {{it}}
+  </div>
+</div>
+<div id="profession-wrapper-2"
+  style="display:flex; justify-content:space-evenly; font-size:50px; margin-top:20px; text-align:center">
+
+  <p>
+    Management:
+  </p>
+  <div id="total-management">
+    {{management}}
+  </div>
+  <p>
+    Content Writers:
+  </p>
+  <div id="total-content">
+    {{content}}
+  </div>
+</div>
+
+<canvas id="myChart-profession" style="width: 50%; height:50%"></canvas>
+<hr>
+<div id="head" style="font-size: 60px; text-align:center; margin-bottom:10px;background-color:#f5db3c">
+  EXPERIENCE
+</div>
+<hr>
+<div id="experience-wrapper"
+  style="display:flex; justify-content:space-evenly; font-size:50px; margin-top:50px; text-align:center">
+  <p>
+    0-2 Years:
+  </p>
+  <div id="lte-2">
+    {{lte2}}
+  </div>
+  <p>
+    3-6 Years:
+  </p>
+  <div id="lte-6">
+    {{lte6}}
+  </div>
+  <p>
+    6+ Years:
+  </p>
+  <div id="mt-6">
+    {{mt6}}
+  </div>
+
+</div>
+
+<canvas id="myChart-experience" style="width: 50%; height:50%"></canvas>
+
+
+<script>
+  let totalMen = document.getElementById('total-men')
+  let totalWomen = document.getElementById('total-women')
+  countOfMen = (totalMen.innerHTML)
+  countOfWomen = (totalWomen.innerHTML)
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['male', 'female'],
+      datasets: [{
+        label: ['# of Men'],
+        data: [countOfMen, countOfWomen],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  var ctx2 = document.getElementById('myChart-profession').getContext('2d');
+  let totalStudent = document.getElementById('total-student')
+  let totalIT = document.getElementById('total-it')
+  let totalManagement = document.getElementById('total-management')
+  let totalContent = document.getElementById('total-content')
+  let countStudent = totalStudent.innerHTML
+  let countIT = totalIT.innerHTML
+  let countManagement = totalManagement.innerHTML
+  let countContent = totalContent.innerHTML
+
+  var myRadarChart = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['Students', 'IT', 'Management', 'Content Writers'],
+
+      datasets: [{
+        label: '# of Profession',
+        data: [countStudent, countIT, countManagement, countContent],
+        backgroundColor: ["rgba(88,0,90,0.2)", "rgba(200,0,0,0.2)", 'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)']
+      }]
+    }
+  });
+
+  let ctx3 = document.getElementById('myChart-experience').getContext('2d')
+
+  let lte2 = document.getElementById('lte-2')
+  let lt6 = document.getElementById('lte-6')
+  let mt6 = document.getElementById('mt-6')
+  let lte2Count = lte2.innerHTML
+  let lt6Count = lt6.innerHTML
+  let mt6Count = mt6.innerHTML
+
+  var myDoughnutChart = new Chart(ctx3, {
+    type: 'doughnut',
+    data: {
+      datasets: [{
+        data: [lte2Count, lt6Count, mt6Count],
+        backgroundColor: ["rgba(200,0,0,0.2)", 'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)']
+      }],
+
+      labels: [
+        '0-2 years',
+        '3-6 years',
+        '6+ years'
+      ]
+    }
+
+  });
+
+
+
+</script>

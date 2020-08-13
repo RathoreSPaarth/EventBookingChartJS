@@ -1,0 +1,25 @@
+<div class="jumbotron" style="margin-top: 10%; background-color:#f5db3c">
+  <h1 class="display-4">CONGRATULATIONS! You have successfully booked 1 seat for the JS Conference.</h1>
+  <p class="lead">Participant Details:</p>
+  <hr class="my-4">
+  <ul style="font-size: 35px;">
+    <li>
+      TICKET ID: {{data.id}}
+    </li>
+    <li>
+      NAME: {{data.firstName}} {{data.lastName}}
+    </li>
+    <li>
+      GENDER: {{data.gender}}
+    </li>
+    <li>
+      CONTACT NO. : {{data.contact}}
+    </li>
+  </ul>
+  <p> Don't forget to bring this ticket to the venue. Time and other details will be communicated later on the
+    registered contact number.</p>
+  <p style="color: red;">
+    If you find any error in the above ticket, contact us at : admin@jsconf.com
+  </p>
+  <a class="btn btn-dark btn-lg" href="/charts" role="button">Check JS Conference statistics</a>
+</div>
